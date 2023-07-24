@@ -1,0 +1,30 @@
+#new-post-label{
+    font-weight: bold;
+}
+
+.post {
+    border-top: 2px solid green;
+    border-right: 5px solid purple;
+    border-bottom: 3px solid orange;
+    border-left: 1px solid gray;
+    
+  }
+.post-date{
+    color:gray;
+}
+
+.profile {
+    display: grid;
+    place-items: center;
+
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heart-fill {
+    fill: red;
+}

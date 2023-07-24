@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+{% block title %}
+    Bid
+{% endblock %}
+{% block body %}
+    {% if message %}
+        <p>{{message}}</p>
+    {% endif %}
+    <div class="row">
+        <div class="card col-6" style="width: 40rem;">
+            <img class="card-img-top" src="{{listing.image}}" alt="Card image cap">
+            <div class="card-body">
+            <h5 class="card-title">{{listing.title}}</h5>
+            <p class="card-text">{{listing.description}}</p>
+            <a href="{% url 'view' listing.id %}" class="btn btn-primary">Go back</a>
+            </div>
+        </div>
+        <div class="col-6">
+            {% if max_bid %}
+                <p>The current highest bid: ${{max_bid}}</p>
+            {% endif %}
+            {% if user_bid %}
+                {% for bid in  user_bid %}
+                <p>Your bid: ${{bid.quantity}}</p>
+                {% endfor %}
+            {% endif %}
+            <form action="{% url 'bid' listing.id %}" method="post">
+                {% csrf_token %}
+                <input type="number" name="my_bid">
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+    
+
+{% endblock %}

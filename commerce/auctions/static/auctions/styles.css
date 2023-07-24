@@ -1,0 +1,18 @@
+body {
+    padding: 10px;
+}
+
+.active-listings{
+    display:flex;
+    flex-wrap: wrap;
+    padding: 20px;
+
+}
+.card-footer > #view {
+    display:flex;
+    align-items: flex-end;
+}
+
+#view-image{
+    width:100%;
+}

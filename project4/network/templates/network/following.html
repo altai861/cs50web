@@ -1,0 +1,67 @@
+{% extends "network/layout.html" %}
+{% load static %}
+{% block body %}
+<div class="p-3 pt-4">
+    {% for post in posts %}
+    <div class="border rounded mx-5 mb-3">
+        <div class="m-3">
+            <div m-1>
+                <a href="{% url 'profile' post.user  %}"><h2>{{post.user}}</h2></a>
+            </div>
+            {% if post.user == request.user %}
+                <a href="{% url 'edit' post.id %}">Edit</a>
+            {% endif %}
+            <p>{{post.post_content}}</p>
+            <p class="post-date">{{post.date}}</p>
+            {% if request.user in post.liked_by.all %}
+                  
+                  <svg onclick="likeHandler({{ post.id }})" class="mx-2" id="like-{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="30" data-id="{{post.id}}" data-liked="true" data-username="{{request.user}}" fill="red" class="bi bi-heart" viewBox="0 0 16 16">
+                    
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                    
+                  </svg><p id="likes-count-{{post.id}}">{{post.likes_count}}</p>
+                  {% else %}
+                  <svg onclick="likeHandler({{ post.id }})" class="mx-2" id="like-{{post.id}}" xmlns="http://www.w3.org/2000/svg" width="30" data-id="{{post.id}}" data-liked="false" data-username="{{request.user}}" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                  </svg><p id="likes-count-{{post.id}}">{{post.likes_count}}</p>
+                  {% endif %}
+                  <script>
+                    function likeHandler(id){
+                      if (document.querySelector(`#like-${id}`).dataset.liked == 'true'){
+                        console.log('You unliking the post');
+                        document.querySelector(`#like-${id}`).dataset.liked = 'false';
+                        document.querySelector(`#like-${id}`).style.fill = 'currentColor';
+                        const username = document.querySelector(`#like-${id}`).dataset.username;
+                        fetch(`unlike/${id}`, {
+                          method: 'POST',
+                          body: JSON.stringify({
+                              username: username,
+                          })
+                        })
+                        .then(response => response.json())
+                        .then(json => console.log(json))
+                        document.querySelector(`#likes-count-${id}`).innerHTML--;
+                      }
+                      else{
+                        console.log('You liking the post');
+                        document.querySelector(`#like-${id}`).dataset.liked = 'true';
+                        document.querySelector(`#like-${id}`).style.fill = 'red';
+                        const username = document.querySelector(`#like-${id}`).dataset.username;
+                        fetch(`like/${id}`, {
+                          method: 'POST',
+                          body: JSON.stringify({
+                              username: username,
+                          })
+                        })
+                        .then(response => response.json())
+                        .then(json => console.log(json))
+                        document.querySelector(`#likes-count-${id}`).innerHTML++;
+                      }
+                    }
+                  </script>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

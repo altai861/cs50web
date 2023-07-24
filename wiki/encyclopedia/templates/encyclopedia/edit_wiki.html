@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Add Wiki
+{% endblock %}
+
+{% block body %}
+    {% if message %}
+        {{message}}
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="add-div">
+            <input type="text" name="title" placeholder="Title" value="{{title}}">
+        </div>
+        <div class="add-div">
+            <textarea name="content" rows="4" cols="20" required="true" value="{{content}}">{{content}}</textarea>
+        </div>
+        <div class="add-div">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+
+{% endblock %}

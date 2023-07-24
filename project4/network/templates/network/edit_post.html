@@ -1,0 +1,16 @@
+{% extends "network/layout.html" %}
+{% block title %}
+Edit Post
+{% endblock %}
+{% block body %}
+<div id="edit-post" class="m-5 p-2">
+    <form action="{% url 'edit' post.id %}" method="post">
+        {% csrf_token %}
+        <label for="exampleFormControlTextarea1" class="form-label" id="new-post-label">Edit Post</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="post-content" required value="{{post.post_content}}">{{post.post_content}}</textarea>
+        
+        <input type="submit" value="Edit" class="btn btn-primary mt-1">
+    </form>
+    <a href="{% url 'delete' post.id %}"><button class="btn btn-danger">Delete Post</button></a>
+</div>
+{% endblock %}

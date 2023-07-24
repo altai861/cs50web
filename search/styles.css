@@ -1,0 +1,140 @@
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.link-item {
+    margin:10px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+  
+  /* visited link */
+a:visited {
+    color: black;
+}
+  
+  /* mouse over link */
+a:hover {
+    color: black;
+}
+  
+  /* selected link */
+a:active {
+    color: black;
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+}
+
+.search-text {
+    display: flex;
+    z-index: 3;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #dfe1e5;
+    box-shadow: none;
+    border-radius: 24px;
+    margin: 0 auto;
+    width: 584px;
+    max-width: 584px;
+    margin-top: 30px;
+}
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button-bar {
+    background-color: #f8f9fa;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    color: #3c4043;
+    font-family: arial,sans-serif;
+    font-size: 14px;
+    margin: 11px 4px;
+    padding: 0 16px;
+    line-height: 27px;
+    height: 36px;
+    min-width: 54px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.header {
+    margin: 20px;
+}
+
+.advanced-search-name{
+    margin: 30px;
+}
+
+.advanced-name{
+    font-size: 20px;
+    color: #d93025;
+    padding: 10px;
+}
+
+.div-advanced{
+    margin: 50px;
+}
+
+.p-advanced {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-row {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left {
+    width: 300px;
+}
+
+.right {
+    width: 385px;
+}
+
+
+
+
+.btn-advanced {
+    background: #8ab4f8;
+    border-color: #8ab4f8;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    margin-right: 16px;
+    height: 27px;
+    line-height: 27px;
+    min-width: 54px;
+    outline: 0;
+    padding: 0 8px;
+}
+
+
+.btn-div {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 700px;
+}
